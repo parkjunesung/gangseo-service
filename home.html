@@ -174,7 +174,7 @@
                 </div>
                 <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
                     <div class="col-lg-6">
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <form name="contactForm" id="contactForm" data-sb-form-api-token="API_TOKEN">
                             <div class="form-floating mb-3 text-dark">
                                 <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                                 <label for="name">성함</label>
@@ -200,7 +200,9 @@
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">접수 실패하였습니다.</div>
                                 전화로 문의주시면 빠르게 안내해드리겠습니다.
                             </div>
-                            <div class="d-grid" style="text-align: center;"><button class="btn btn-primary btn-xxl-2 disabled" id="submitButton" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;접수 신청&nbsp;&nbsp;&nbsp;&nbsp;</button></div>
+                            <div class="d-grid" style="text-align: center;">
+                                <button class="btn btn-primary btn-xxl-2 disabled" id="submitButton" type="button" onclick="javascript:sendSMS();">&nbsp;&nbsp;&nbsp;&nbsp;접수 신청&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -208,7 +210,6 @@
                     <div class="col-lg-4 text-center mb-5 mb-lg-0">
                         <i class="bi-phone fs-2 mb-3 text-muted"></i>
                         <div>1588 - 0399</div>
-<!--                        <a href="javascript:sendSMS()">문자보내기</a>-->
                     </div>
                 </div>
             </div>
@@ -471,84 +472,11 @@
         <!-- SimpleLightbox plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <!-- Core theme JS-->
+        <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/scripts.js"></script>
-        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-        <script>
-            // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
-            Kakao.init('fe2feb9064d3c8a6d3933a19f8a86f44');
+        <script src="js/ctrlFunc.js"></script>
 
-            // SDK 초기화 여부를 판단합니다.
-            console.log(Kakao.isInitialized());
 
-            // function sendSMS() {
-            //     var name = document.getElementById("name").value;
-            //     var phone = document.getElementById("phone").value;
-            //     var message = document.getElementById("message").value;
-            //
-            //     var contents = "";
-            //     contents += "성함 : " + name + "\n" +
-            //         "연락처 : " + phone + "\n" +
-            //         "내용 : " + message
-            //
-            //     console.log("메세지 전송");
-            //     Kakao.API.request({
-            //         url: '/v2/api/talk/memo/default/send',
-            //         data: {
-            //             template_object: {
-            //                 object_type: 'feed',
-            //                 content: {
-            //                     title: '강서 서비스 센터',
-            //                     description: contents,
-            //                 }
-            //             }
-            //         },
-            //         success: function(response) {
-            //             console.log(response);
-            //         },
-            //         fail: function(error) {
-            //             console.log(error);
-            //         },
-            //     });
-            // }
-
-            function sendSMS() {
-                var name = document.getElementById("name").value;
-                var phone = document.getElementById("phone").value;
-                var message = document.getElementById("message").value;
-
-                var contents = "";
-                contents += "성함 : " + name + "\n" +
-                    "연락처 : " + phone + "\n" +
-                    "내용 : " + message;
-
-                Kakao.Auth.login({
-                    scope: 'TALK_MESSAGE',
-                    success: function() {
-                        Kakao.API.request({
-                            url: '/v2/api/talk/memo/default/send',
-                            data: {
-                                template_object: {
-                                    object_type: 'feed',
-                                    content: {
-                                        title: '강서 서비스 센터',
-                                        description: contents,
-                                    },
-                                },
-                            },
-                            success: function(res) {
-                                console.log(res);
-                            },
-                            fail: function(err) {
-                                console.log(err);
-                            },
-                        })
-                    },
-                    fail: function(err) {
-                        console.log('failed to login: ' + JSON.stringify(err))
-                    },
-                })
-            }
-        </script>
         <!-- SB Forms JS -->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
