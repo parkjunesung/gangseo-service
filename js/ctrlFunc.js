@@ -8,7 +8,7 @@
         timestemp = timestemp.toLocaleString();
         $.ajax({
             type : "GET",
-            url : "https://script.google.com/macros/s/AKfycbwo3Tp80KoFMVCXbOo_sgzEr64AcTOYAcB8Ekhy6MefhLqNfn2ZLt3UHhN3ROcdrTTN/exec",
+            url : "https://script.google.com/macros/s/AKfycbzLsgzsY-jG0hhEovdNMeUydt71CksRcaj_4WIPytZgivqCf2FvbhTGDNGu_xCXcnkVCw/exec",
             data : {
                 접수시간 : timestemp,
                 성함 : name,
