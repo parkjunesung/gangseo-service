@@ -105,3 +105,8 @@
 .none-color {
     opacity: 0;
 }
+
+.icon-img {
+    width: 50px;
+    margin-bottom: 20px;
+}
