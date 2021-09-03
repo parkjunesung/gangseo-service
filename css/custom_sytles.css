@@ -4,14 +4,20 @@
     max-height: 100px;
 }
 
+.main_logo {
+    font-size: 1rem;
+    padding-left: 30px;
+}
+
 .text_align_bottom{
     vertical-align: bottom;
 }
-
+.text_align_center{
+    vertical-align: center;
+}
 .footer-text-align-left{
     text-align: left; !important;
 }
-
 
 .map-info-box {
     margin-top: 40px;
